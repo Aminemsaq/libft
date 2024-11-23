@@ -17,14 +17,13 @@ CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+all: ${NAME}
+
+%.o: %.c libft.h
+	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}: ${OBJS}
 	${LIBC} ${NAME} ${OBJS}
-
-all: ${NAME}
-
 
 clean:
 	${RM} ${OBJS}
@@ -33,3 +32,5 @@ fclean: clean
 	${RM} ${NAME}
 
 re: fclean all
+
+.PHONY: clean

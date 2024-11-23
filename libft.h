@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 22:29:29 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/20 16:38:54 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/24 00:18:52 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 # define LIBFT_H
 # define MAX_LL 9223372036854775807
 
-# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 size_t	ft_strlen(const char *str);
 int		ft_isalpha(int i);

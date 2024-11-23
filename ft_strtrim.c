@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 22:00:11 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/18 03:55:29 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/24 00:01:16 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*result;
 	size_t	size;
 
-	if (!s1 || !set)
+	if (!s1)
 		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
 	while (*s1 && ft_check_set(*s1, set) == 1)
 		s1++;
 	size = ft_strlen(s1);
@@ -43,4 +45,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	ft_strlcpy(result, (char *)s1, size + 1);
 	return (result);
+}
+
+#include <stdio.h>
+int main(){
+	printf("%s",ft_strtrim("        Amine        ","A "));
 }

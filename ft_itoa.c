@@ -6,13 +6,13 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 21:10:09 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/20 16:32:41 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/23 22:43:05 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_char(char *s, unsigned int number, long int len)
+static char	*ft_char(char *s, unsigned int number, int len)
 {
 	while (number > 0)
 	{
@@ -39,9 +39,9 @@ static long int	ft_len(int n)
 
 char	*ft_itoa(int n)
 {
-	char				*s;
-	long int			len;
-	unsigned int		number;
+	char		*s;
+	int			len;
+	int			number;
 
 	len = ft_len(n);
 	s = (char *)malloc(sizeof(char) * (len + 1));

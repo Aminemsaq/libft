@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 20:32:33 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/18 02:00:55 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/23 15:18:38 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*get_word(const char *s, char c)
 	{
 		len++;
 	}
-	result = (char *)malloc(sizeof(char) * (len +1));
+	result = (char *)malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
 	len = 0;

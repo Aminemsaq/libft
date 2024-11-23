@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 16:02:11 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/17 21:43:43 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/23 14:22:20 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)
-		return ((char *)s2);
+		return (ft_strdup(s2));
 	if (!s2)
-		return ((char *)s1);
+		return (ft_strdup(s1));
 	result = (char *) malloc(ft_strlen(s1) + ft_strlen(s2) + 1 * sizeof(char));
 	if (!result)
 		return (NULL);
