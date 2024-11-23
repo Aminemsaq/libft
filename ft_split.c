@@ -6,67 +6,95 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 20:32:33 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/17 20:32:59 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/18 02:00:55 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	ft_countword(char const *s, char c)
+static size_t	count_words(const char *s, char c)
 {
-	int	count;
-	int	in_word;
-
-	count = 0;
-	in_word = 0;
-	while (*s)
-	{
-		if (*s != c && !in_word)
-		{
-			in_word = 1;
-			count++;
-		}
-		else if (*s == c)
-		{
-			in_word = 0;
-		}
-		s++;
-	}
-	return (count);
-}
-
-static void	ft_extractwords(char **result, char const *s, char c)
-{
-	size_t	start;
-	size_t	end;
 	size_t	i;
+	size_t	result;
 
-	start = 0;
-	end = 0;
 	i = 0;
-	while (i < (size_t)ft_countword(s, c))
+	result = 0;
+	while (s[i] != '\0')
 	{
-		while (s[start] == c)
-			start++;
-		end = start;
-		while (s[end] != c && s[end])
-			end++;
-		result[i] = ft_substr(s, start, end - start);
-		start = end;
-		i++;
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] != '\0')
+			result++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
-	result[i] = 0;
+	return (result);
 }
 
-char	**ft_split(char const *s, char c)
+static char	*get_word(const char *s, char c)
 {
-	char	**result;
+	size_t	len;
+	char	*result;
 
 	if (!s)
 		return (NULL);
-	result = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
+	len = 0;
+	while (s[len] && s[len] != c)
+	{
+		len++;
+	}
+	result = (char *)malloc(sizeof(char) * (len +1));
 	if (!result)
 		return (NULL);
-	ft_extractwords(result, s, c);
+	len = 0;
+	while (s[len] && s[len] != c)
+	{
+		result[len] = s[len];
+		len++;
+	}
+	result[len] = '\0';
+	return (result);
+}
+
+static char	**abort_split(char **words, size_t index)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < index)
+	{
+		free(words[i]);
+		i++;
+	}
+	free(words);
+	return (NULL);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**result;
+	size_t	i;
+	size_t	j;
+	size_t	word_count;
+
+	if (!s)
+		return (NULL);
+	word_count = count_words(s, c);
+	result = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!result)
+		return (NULL);
+	i = 0;
+	j = -1;
+	while (++j < word_count)
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		result[j] = get_word(&s[i], c);
+		if (!result[j])
+			return (abort_split(result, j));
+		while (s[i] && s[i] != c)
+			i++;
+	}
+	result[word_count] = NULL;
 	return (result);
 }

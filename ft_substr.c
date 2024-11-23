@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 14:56:14 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/18 00:28:12 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/18 01:59:29 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,18 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*result;
-	size_t	i;
+	size_t	slen;
 
 	if (!s)
 		return (NULL);
-	if (len > ft_strlen(s))
-		len = ft_strlen(s) - start;
-	if (start >= ft_strlen(s))
-		len = ft_strlen(s);
-	result = (char *)malloc((len + 1) * sizeof(char));
+	slen = ft_strlen(s);
+	if (start >= slen)
+		start = slen;
+	if (len > slen - start)
+		len = slen - start;
+	result = (char *)malloc((sizeof(char) * len) + 1);
 	if (!result)
 		return (NULL);
-	i = 0;
-	while (start < ft_strlen(s) && i < len)
-	{
-		result[i] = s[start];
-		start++;
-		i++;
-	}
-	result[i] = '\0';
+	ft_strlcpy(result, s + start, len + 1);
 	return (result);
 }
