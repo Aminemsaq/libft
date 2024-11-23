@@ -6,7 +6,7 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 22:00:11 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/24 00:01:16 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/24 00:38:48 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	ft_strlcpy(result, (char *)s1, size + 1);
 	return (result);
-}
-
-#include <stdio.h>
-int main(){
-	printf("%s",ft_strtrim("        Amine        ","A "));
 }
