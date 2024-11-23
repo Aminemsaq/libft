@@ -6,12 +6,13 @@
 /*   By: amsaq <amsaq@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 22:29:29 by amsaq             #+#    #+#             */
-/*   Updated: 2024/11/18 00:42:30 by amsaq            ###   ########.fr       */
+/*   Updated: 2024/11/18 03:46:05 by amsaq            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define MAX_LL 9223372036854775807
 
 # include <stddef.h>
 # include <stdlib.h>
